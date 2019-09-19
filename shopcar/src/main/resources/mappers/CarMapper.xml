@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vip.shopcar.mapper.CarMapper">
+  <resultMap id="BaseResultMap" type="com.vip.shopcar.domain.entity.Car">
+    <!--@mbg.generated-->
+    <id column="car_id" jdbcType="INTEGER" property="carId" />
+    <result column="autotype_id" jdbcType="INTEGER" property="autotypeId" />
+    <result column="brand_id" jdbcType="INTEGER" property="brandId" />
+    <result column="color_id" jdbcType="INTEGER" property="colorId" />
+    <result column="standard_id" jdbcType="INTEGER" property="standardId" />
+    <result column="price_id" jdbcType="INTEGER" property="priceId" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="carname" jdbcType="VARCHAR" property="carname" />
+    <result column="prices" jdbcType="DOUBLE" property="prices" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    car_id, autotype_id, brand_id, color_id, standard_id, price_id, num, is_delete, carname, 
+    prices
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from car
+    where car_id = #{carId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from car
+    where car_id = #{carId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="car_id" keyProperty="carId" parameterType="com.vip.shopcar.domain.entity.Car" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into car (autotype_id, brand_id, color_id, 
+      standard_id, price_id, num, 
+      is_delete, carname, prices
+      )
+    values (#{autotypeId,jdbcType=INTEGER}, #{brandId,jdbcType=INTEGER}, #{colorId,jdbcType=INTEGER}, 
+      #{standardId,jdbcType=INTEGER}, #{priceId,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=TINYINT}, #{carname,jdbcType=VARCHAR}, #{prices,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="car_id" keyProperty="carId" parameterType="com.vip.shopcar.domain.entity.Car" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into car
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="autotypeId != null">
+        autotype_id,
+      </if>
+      <if test="brandId != null">
+        brand_id,
+      </if>
+      <if test="colorId != null">
+        color_id,
+      </if>
+      <if test="standardId != null">
+        standard_id,
+      </if>
+      <if test="priceId != null">
+        price_id,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="carname != null">
+        carname,
+      </if>
+      <if test="prices != null">
+        prices,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="autotypeId != null">
+        #{autotypeId,jdbcType=INTEGER},
+      </if>
+      <if test="brandId != null">
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="colorId != null">
+        #{colorId,jdbcType=INTEGER},
+      </if>
+      <if test="standardId != null">
+        #{standardId,jdbcType=INTEGER},
+      </if>
+      <if test="priceId != null">
+        #{priceId,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="carname != null">
+        #{carname,jdbcType=VARCHAR},
+      </if>
+      <if test="prices != null">
+        #{prices,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vip.shopcar.domain.entity.Car">
+    <!--@mbg.generated-->
+    update car
+    <set>
+      <if test="autotypeId != null">
+        autotype_id = #{autotypeId,jdbcType=INTEGER},
+      </if>
+      <if test="brandId != null">
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="colorId != null">
+        color_id = #{colorId,jdbcType=INTEGER},
+      </if>
+      <if test="standardId != null">
+        standard_id = #{standardId,jdbcType=INTEGER},
+      </if>
+      <if test="priceId != null">
+        price_id = #{priceId,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="carname != null">
+        carname = #{carname,jdbcType=VARCHAR},
+      </if>
+      <if test="prices != null">
+        prices = #{prices,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where car_id = #{carId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vip.shopcar.domain.entity.Car">
+    <!--@mbg.generated-->
+    update car
+    set autotype_id = #{autotypeId,jdbcType=INTEGER},
+      brand_id = #{brandId,jdbcType=INTEGER},
+      color_id = #{colorId,jdbcType=INTEGER},
+      standard_id = #{standardId,jdbcType=INTEGER},
+      price_id = #{priceId,jdbcType=INTEGER},
+      num = #{num,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      carname = #{carname,jdbcType=VARCHAR},
+      prices = #{prices,jdbcType=DOUBLE}
+    where car_id = #{carId,jdbcType=INTEGER}
+  </update>
+</mapper>
